@@ -3,7 +3,7 @@
 }
 
 .nav_list > li {
-    @apply bg-black px-2 py-2 rounded flex align-middle justify-center hover:bg-gray-800 cursor-pointer
+    @apply bg-black px-2 py-2 rounded flex flex-1 align-middle justify-center hover:bg-gray-800 cursor-pointer
 }
 
 .nav_list svg {
