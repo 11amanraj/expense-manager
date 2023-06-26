@@ -1,0 +1,12 @@
+.nav_list {
+    @apply flex justify-between gap-2 flex-row md:flex-col
+}
+
+.nav_list > li {
+    @apply bg-black px-2 py-2 rounded flex align-middle justify-center hover:bg-gray-800 cursor-pointer
+}
+
+.nav_list svg {
+    height: 3rem;
+    color: white;
+}
