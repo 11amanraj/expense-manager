@@ -1,4 +1,5 @@
 import NavBar from '@components/NavBar'
+import { ReduxProvider } from '@redux/provider'
 import '@styles/globals.css'
 import { Inter } from 'next/font/google'
 
@@ -17,10 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar />
-        <main>
-          {children}
-        </main>
+        <ReduxProvider>
+          <NavBar />
+          <main>
+            {children}
+          </main>
+        </ReduxProvider>
       </body>
     </html>
   )
