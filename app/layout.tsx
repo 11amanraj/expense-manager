@@ -1,8 +1,8 @@
-import NavBar from '@components/NavBar'
+import NavBar from '@components/Navigation/NavBar'
 import { ReduxProvider } from '@redux/provider'
 import '@styles/globals.css'
 import { Inter } from 'next/font/google'
-import Notification from '@components/Notification'
+import Notification from '@components/Notification/Notification'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,11 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} flex flex-col md:flex-row`}>
         <ReduxProvider>
           <NavBar />
           <Notification />
-          <main>
+          <main className='flex-1'>
             {children}
           </main>
         </ReduxProvider>
