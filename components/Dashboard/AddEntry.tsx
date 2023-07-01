@@ -46,7 +46,7 @@ const AddEntry = () => {
     }
 
     return (
-        <div className="flex justify-center items-center bg-gray-600 p-4 m-4 rounded-md h-40">
+        <>
             <FontAwesomeIcon 
                 onClick={() => setShowModal(true)}
                 className='flex-1 h-full w-full text-green-500 cursor-pointer' 
@@ -58,7 +58,7 @@ const AddEntry = () => {
                     <legend>Select type of transaction</legend>
                     <div>
                         <label htmlFor="expense">Expense</label>
-                        <input type='radio' id='expense' name='amountType' value='expense' checked ref={expenseRadioRef}/>
+                        <input type='radio' id='expense' name='amountType' value='expense' defaultChecked ref={expenseRadioRef}/>
 
                         <label htmlFor="credit">Credit</label>
                         <input type='radio' id='credit' name='amountType' value='credit' ref={creditRadioRef}/>
@@ -86,7 +86,7 @@ const AddEntry = () => {
                     >Add Amount</button>
                 </div>
             </Modal>
-        </div>
+        </>
     )
 }
 

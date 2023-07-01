@@ -5,6 +5,7 @@ import { faHouse, faCirclePlus, faUser, faGear, faSun, faMoon } from '@fortaweso
 import '@styles/navbar.css'
 import { useState } from 'react'
 import Drawer from './Drawer';
+import AddEntry from '@components/Dashboard/AddEntry';
 
 export default function NavBar() {
     const [showDrawer, setShowDrawer] = useState(false)
@@ -17,7 +18,7 @@ export default function NavBar() {
     <nav className="bg-white text-red-800 px-2 py-2 md:h-screen md:w-24">
         <ul className="nav_list">
             <li><FontAwesomeIcon icon={faHouse}/></li>
-            <li onClick={drawerHandler}><FontAwesomeIcon icon={faCirclePlus}/></li>
+            <li><AddEntry /></li>
             <li onClick={drawerHandler}><FontAwesomeIcon icon={faUser}/></li>
             <li onClick={drawerHandler}><FontAwesomeIcon icon={faGear}/></li>
             <li><FontAwesomeIcon icon={faMoon}/></li>
