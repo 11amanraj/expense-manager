@@ -3,24 +3,33 @@ import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@redux/store'
 import { addOneCredit, addOneExpense } from '@redux/reducers/balanceReducer'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Modal from '@components/UI/Modal'
-import { faSmile } from '@fortawesome/free-regular-svg-icons'
 
 const AddEntry = () => {
     const dispatch = useDispatch<AppDispatch>()
     const [showModal, setShowModal] = useState(false)
+    const [error, setError] = useState<string | null>(null)
     const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setError(null)
+        }, 5000)
+
+        return () => clearTimeout(timer)
+    }, [error])
 
     const addAmountHandler = () => {
         if(inputRef.current) {
             const amount = parseInt(inputRef.current.value)
             if(isNaN(amount)) {
-                dispatch(addOneCredit(0))
+                // dispatch(addOneCredit(0))
+                setError('Expense can only have numerical values')
             } else {
                 dispatch(addOneCredit(amount))
+                setShowModal(false)
             }
-            setShowModal(false)
         }
     }
 
@@ -39,6 +48,7 @@ const AddEntry = () => {
             <Modal showModal={showModal} onClose={() => setShowModal(false)}>
                 <h2>Add Credit/Expense</h2>
                 <div>
+                    {error && <div className='text-red-500'>{error}</div>}
                     <label htmlFor='amount'>Amount</label>
                     <input className='bg-gray-400 text-teal-900' type='number' id='amount' ref={inputRef}/>
                 </div>
