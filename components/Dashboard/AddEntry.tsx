@@ -52,11 +52,6 @@ const AddEntry = () => {
                 className='flex-1 h-full w-full text-green-500 cursor-pointer' 
                 icon={faCirclePlus}
             />
-            <FontAwesomeIcon 
-                onClick={() => dispatch(addOneExpense(400))} 
-                className='flex-1 h-full w-full text-red-500 cursor-pointer' 
-                icon={faCirclePlus}
-            />
             <Modal showModal={showModal} onClose={closeModalHandler}>
                 <h2 className='text-lg my-4'>Add Credit/Expense</h2>
                 <fieldset>
