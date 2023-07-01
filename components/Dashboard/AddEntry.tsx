@@ -11,6 +11,8 @@ const AddEntry = () => {
     const [showModal, setShowModal] = useState(false)
     const [error, setError] = useState<string>('')
     const inputRef = useRef<HTMLInputElement>(null)
+    const expenseRadioRef = useRef<HTMLInputElement>(null)
+    const creditRadioRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
         if(error.length > 0) {
@@ -23,13 +25,15 @@ const AddEntry = () => {
     }, [error])
 
     const addAmountHandler = () => {
-        if(inputRef.current) {
+        if(inputRef.current && expenseRadioRef.current && creditRadioRef.current) {
             const amount = parseInt(inputRef.current.value)
             if(isNaN(amount)) {
-                // dispatch(addOneCredit(0))
                 setError('Expense can only have numerical values')
             } else {
-                dispatch(addOneCredit(amount))
+                expenseRadioRef.current.checked 
+                    ? dispatch(addOneExpense(amount)) 
+                    : dispatch(addOneCredit(amount))
+                
                 setShowModal(false)
                 setError('')
             }
@@ -55,12 +59,23 @@ const AddEntry = () => {
             />
             <Modal showModal={showModal} onClose={closeModalHandler}>
                 <h2 className='text-lg my-4'>Add Credit/Expense</h2>
+                <fieldset>
+                    <legend>Select type of transaction</legend>
+                    <div>
+                        <label htmlFor="expense">Expense</label>
+                        <input type='radio' id='expense' name='amountType' value='expense' checked ref={expenseRadioRef}/>
+
+                        <label htmlFor="credit">Credit</label>
+                        <input type='radio' id='credit' name='amountType' value='credit' ref={creditRadioRef}/>
+                    </div>
+                </fieldset>
                 <div className='flex gap-2 items-center'>
                     <label htmlFor='amount'>Amount</label>
                     <input 
                         className='bg-white text-teal-900 flex-auto min-w-0 rounded-sm p-2' 
                         type='number' 
                         id='amount' 
+                        name='amount'
                         ref={inputRef}
                     />
                 </div>
