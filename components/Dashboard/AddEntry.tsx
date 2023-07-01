@@ -9,15 +9,17 @@ import Modal from '@components/UI/Modal'
 const AddEntry = () => {
     const dispatch = useDispatch<AppDispatch>()
     const [showModal, setShowModal] = useState(false)
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<string>('')
     const inputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setError(null)
-        }, 5000)
+        if(error.length > 0) {
+            const timer = setTimeout(() => {
+                setError('')
+            }, 5000)
 
-        return () => clearTimeout(timer)
+            return () => clearTimeout(timer)
+        }
     }, [error])
 
     const addAmountHandler = () => {
@@ -29,8 +31,14 @@ const AddEntry = () => {
             } else {
                 dispatch(addOneCredit(amount))
                 setShowModal(false)
+                setError('')
             }
         }
+    }
+
+    const closeModalHandler = () => {
+        setShowModal(false)
+        setError('')
     }
 
     return (
@@ -45,16 +53,27 @@ const AddEntry = () => {
                 className='flex-1 h-full w-full text-red-500 cursor-pointer' 
                 icon={faCirclePlus}
             />
-            <Modal showModal={showModal} onClose={() => setShowModal(false)}>
-                <h2>Add Credit/Expense</h2>
-                <div>
-                    {error && <div className='text-red-500'>{error}</div>}
+            <Modal showModal={showModal} onClose={closeModalHandler}>
+                <h2 className='text-lg my-4'>Add Credit/Expense</h2>
+                <div className='flex gap-2 items-center'>
                     <label htmlFor='amount'>Amount</label>
-                    <input className='bg-gray-400 text-teal-900' type='number' id='amount' ref={inputRef}/>
+                    <input 
+                        className='bg-white text-teal-900 flex-auto min-w-0 rounded-sm p-2' 
+                        type='number' 
+                        id='amount' 
+                        ref={inputRef}
+                    />
                 </div>
-                <div>
-                    <button onClick={() => setShowModal(false)}>Close Modal</button>
-                    <button onClick={addAmountHandler}>Add Amount</button>
+                <div className='text-red-500 text-xs h-4'>{error}</div>
+                <div className='flex justify-between'>
+                    <button 
+                        className='bg-red-600 p-2 rounded-sm hover:bg-red-900' 
+                        onClick={closeModalHandler}
+                    >Close Modal</button>
+                    <button 
+                        className='bg-green-600 p-2 rounded-sm hover:bg-green-900' 
+                        onClick={addAmountHandler}
+                    >Add Amount</button>
                 </div>
             </Modal>
         </div>
