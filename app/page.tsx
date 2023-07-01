@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <section>
       <AddEntry />
-      <div className='bg-gray-500 m-4 p-8 rounded'>{balance}</div> 
+      <div className='bg-gray-500 m-4 p-8 rounded'>{balance}</div>
     </section>
   )
 }
