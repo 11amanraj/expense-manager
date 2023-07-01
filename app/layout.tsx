@@ -22,6 +22,7 @@ export default function RootLayout({
         <ReduxProvider>
           <NavBar />
           <Notification />
+          <div id='portal' />
           <main className='flex-1'>
             {children}
           </main>
