@@ -88,7 +88,7 @@ const AddEntry = () => {
                 </div>
                 <div className='flex justify-between items-center gap-2'>
                     <label htmlFor="category">Choose a Category:</label>
-                    <select className='p-2 flex-1 text-black' name="category" id="category">
+                    <select className='px-2 py-2 rounded flex-1 text-black' name="category" id="category">
                         {allCategories.map(category => (
                             <option key={category.id} value={category.title}>{category.title}</option>
                         ))}
