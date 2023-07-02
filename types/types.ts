@@ -20,3 +20,8 @@ export interface notification {
     error: boolean,
     id: string
 }
+
+export interface category {
+    title: string,
+    id: string
+}

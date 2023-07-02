@@ -2,11 +2,13 @@ import { configureStore, AnyAction, ThunkAction } from '@reduxjs/toolkit'
 import notificationReducer from './reducers/notificationReducer'
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 import balanceReducer from './reducers/balanceReducer'
+import categoryReducer from './reducers/categoryReducer'
 
 export const store = configureStore({
     reducer: {
         notification: notificationReducer,
-        balance: balanceReducer
+        balance: balanceReducer,
+        category: categoryReducer
     }
 })
 
