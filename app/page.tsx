@@ -7,9 +7,10 @@ export default function Home() {
   const balance = useAppSelector(state => state.balance)
 
   return (
-    <section className='flex'>
-      <div className='bg-gray-500 m-4 p-8 rounded flex-1'>
-        <p>{balance.currentAmount}</p>
+    <section className='flex flex-col md:flex-row'>
+      <div className='bg-gray-500 m-4 p-8 rounded flex-1 flex'>
+        <h1 className='text-xl'>Current Balance : </h1>
+        <p className='flex-1 text-6xl flex justify-center items-center'>{balance.currentAmount}</p>
       </div>
       <div className='bg-gray-500 m-4 p-8 rounded '>
         <h1>Recent Transactions</h1>
