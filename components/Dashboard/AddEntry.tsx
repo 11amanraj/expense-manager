@@ -33,7 +33,7 @@ const AddEntry = () => {
             } else {
                 expenseRadioRef.current.checked 
                     ? dispatch(addOneExpense({
-                        type: transactionType.CREDIT,
+                        type: transactionType.EXPENSE,
                         amount: amount,
                         date: new Date()
                     })) 

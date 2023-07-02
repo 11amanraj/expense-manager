@@ -17,11 +17,10 @@ export default function Home() {
           {balance.history.map(transaction => (
             <li 
               key={Math.random()} 
-              className={`${transaction.type === transactionType.CREDIT ? 'bg-blue-400' : 'bg-red-400'} my-2 py-2 px-4 rounded-lg flex gap-4`}
+              className={`${transaction.type === transactionType.CREDIT ? 'bg-blue-400' : 'bg-red-400'} my-2 py-2 px-4 rounded-lg flex justify-between gap-4`}
             >
               <p>{transaction.amount}</p>
-              <p>{transaction.date.toString()}</p>
-              <p>{transaction.type}</p>
+              <p>{transaction.date.getUTCDate()}/{transaction.date.getUTCMonth()}/{transaction.date.getFullYear()}</p>
             </li>
           ))}
         </ul>
