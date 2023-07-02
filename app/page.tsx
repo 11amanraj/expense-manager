@@ -8,7 +8,12 @@ export default function Home() {
 
   return (
     <section>
-      <div className='bg-gray-500 m-4 p-8 rounded'>{balance}</div>
+      <div className='bg-gray-500 m-4 p-8 rounded'>
+        <p>{balance.currentAmount}</p>
+        {balance.history.map(transaction => (
+          <p key={Math.random()}>{transaction.amount}</p>
+        ))}
+      </div>
     </section>
   )
 }

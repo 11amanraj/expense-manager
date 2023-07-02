@@ -5,6 +5,7 @@ import { AppDispatch } from '@redux/store'
 import { addOneCredit, addOneExpense } from '@redux/reducers/balanceReducer'
 import { useEffect, useRef, useState } from 'react'
 import Modal from '@components/UI/Modal'
+import { transactionType } from '../../types/types'
 
 const AddEntry = () => {
     const dispatch = useDispatch<AppDispatch>()
@@ -31,8 +32,16 @@ const AddEntry = () => {
                 setError('Expense can only have numerical values')
             } else {
                 expenseRadioRef.current.checked 
-                    ? dispatch(addOneExpense(amount)) 
-                    : dispatch(addOneCredit(amount))
+                    ? dispatch(addOneExpense({
+                        type: transactionType.CREDIT,
+                        amount: amount,
+                        date: new Date()
+                    })) 
+                    : dispatch(addOneCredit({
+                        type: transactionType.CREDIT,
+                        amount: amount,
+                        date: new Date()
+                    }))
                 
                 setShowModal(false)
                 setError('')
