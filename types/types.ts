@@ -6,7 +6,8 @@ export enum transactionType {
 export interface transaction {
     date: Date,
     type: transactionType,
-    amount: number
+    amount: number,
+    description: string
 }
 
 export interface balance {

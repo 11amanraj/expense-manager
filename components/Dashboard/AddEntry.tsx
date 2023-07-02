@@ -35,12 +35,14 @@ const AddEntry = () => {
                     ? dispatch(addOneExpense({
                         type: transactionType.EXPENSE,
                         amount: amount,
-                        date: new Date()
+                        date: new Date(),
+                        description: ''
                     })) 
                     : dispatch(addOneCredit({
                         type: transactionType.CREDIT,
                         amount: amount,
-                        date: new Date()
+                        date: new Date(),
+                        description: ''
                     }))
                 
                 setShowModal(false)
