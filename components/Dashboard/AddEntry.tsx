@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '@redux/store'
+import { AppDispatch, useAppSelector } from '@redux/store'
 import { addOneCredit, addOneExpense } from '@redux/reducers/balanceReducer'
 import { useEffect, useRef, useState } from 'react'
 import Modal from '@components/UI/Modal'
@@ -9,6 +9,7 @@ import { transactionType } from '../../types/types'
 
 const AddEntry = () => {
     const dispatch = useDispatch<AppDispatch>()
+    const allCategories = useAppSelector(state => state.category)
     const [showModal, setShowModal] = useState(false)
     const [error, setError] = useState<string>('')
     const inputRef = useRef<HTMLInputElement>(null)
@@ -84,6 +85,14 @@ const AddEntry = () => {
                         name='amount'
                         ref={inputRef}
                     />
+                </div>
+                <div className='flex justify-between items-center gap-2'>
+                    <label htmlFor="category">Choose a Category:</label>
+                    <select className='p-2 flex-1 text-black' name="category" id="category">
+                        {allCategories.map(category => (
+                            <option key={category.id} value={category.title}>{category.title}</option>
+                        ))}
+                    </select> 
                 </div>
                 <div className='text-red-500 text-xs h-4'>{error}</div>
                 <div className='flex justify-between'>
