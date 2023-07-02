@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AppThunk } from '@redux/store'
-
-interface notification {
-    message: string,
-    error: boolean,
-    id: string
-}
+import { notification } from '../../types/types'
 
 const initialState: notification[] = []
 

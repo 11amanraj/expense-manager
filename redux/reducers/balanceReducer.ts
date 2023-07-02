@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AppThunk } from '@redux/store'
 import { addOneNotification } from './notificationReducer'
+import { balance } from '../../types/types'
 
 const initialState: number = 0
 
