@@ -3,7 +3,12 @@ import { AppThunk } from '@redux/store'
 import { category } from '../../types/types'
 import { addOneNotification } from './notificationReducer'
 
-const initialState: category[] = []
+const initialState: category[] = [
+    { title: 'Entertainment', id: Math.random().toString() },
+    { title: 'Food', id: Math.random().toString() },
+    { title: 'Gadget', id: Math.random().toString() },
+    { title: 'Bills', id: Math.random().toString() }
+]
 
 const categoryReducer = createSlice({
     name: 'category',
